@@ -59,9 +59,9 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="p-8 md:p-12 rounded-3xl bg-card border border-white/5 hover:border-primary/30 transition-all group"
+              className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-card to-card/50 border border-accent/20 hover:border-primary/50 transition-all group"
             >
-              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 text-primary group-hover:scale-110 transition-transform">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-8 text-primary group-hover:scale-110 transition-transform">
                 <service.icon className="w-8 h-8" />
               </div>
               
@@ -80,7 +80,7 @@ export default function Services() {
               </ul>
               
               <Link href="/audit">
-                <Button variant="outline" className="w-full rounded-full border-white/10 hover:bg-white/5 hover:border-primary/50">
+                <Button className="w-full rounded-full bg-gradient-to-r from-primary to-accent text-white hover:from-primary/90 hover:to-accent/90 font-semibold">
                   Request Info
                 </Button>
               </Link>

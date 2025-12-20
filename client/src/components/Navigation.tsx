@@ -63,7 +63,7 @@ export function Navigation() {
             </Link>
           ))}
           <Link href="/audit">
-            <Button className="bg-white text-black hover:bg-gray-100 font-semibold rounded-full px-6">
+            <Button className="bg-gradient-to-r from-primary to-accent text-white hover:from-primary/90 hover:to-accent/90 font-semibold rounded-full px-6">
               Get Free Audit
             </Button>
           </Link>
@@ -102,7 +102,7 @@ export function Navigation() {
                 </Link>
               ))}
               <Link href="/audit" onClick={() => setIsOpen(false)}>
-                <Button className="w-full bg-white text-black hover:bg-gray-100 font-semibold rounded-full mt-4">
+                <Button className="w-full bg-gradient-to-r from-primary to-accent text-white hover:from-primary/90 hover:to-accent/90 font-semibold rounded-full mt-4">
                   Get Free Audit
                 </Button>
               </Link>

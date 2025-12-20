@@ -20,7 +20,7 @@ export default function Audit() {
               Understand exactly where your brand stands in the market landscape. Our analysts will review your digital footprint and identify high-leverage opportunities.
             </p>
             
-            <div className="space-y-6 bg-card/50 p-8 rounded-2xl border border-white/5">
+            <div className="space-y-6 bg-gradient-to-br from-card to-card/50 p-8 rounded-2xl border border-accent/20">
               <h3 className="text-lg font-bold">What you'll get:</h3>
               <ul className="space-y-4">
                 {[
@@ -42,9 +42,9 @@ export default function Audit() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-card border border-white/10 p-8 md:p-10 rounded-3xl shadow-2xl relative overflow-hidden"
+            className="bg-gradient-to-br from-card to-card/50 border border-accent/30 p-8 md:p-10 rounded-3xl shadow-2xl relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-[60px] rounded-full" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/30 to-accent/30 blur-[60px] rounded-full" />
             <div className="relative z-10">
               <h2 className="text-2xl font-bold font-display mb-6">Request Your Audit</h2>
               <LeadForm type="audit" />

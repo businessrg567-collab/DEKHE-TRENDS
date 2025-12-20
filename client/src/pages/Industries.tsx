@@ -48,8 +48,8 @@ export default function Industries() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {industries.map((item) => (
-            <div key={item.title} className="group relative overflow-hidden rounded-3xl bg-card border border-white/10 p-8 hover:border-white/20 transition-all">
-              <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${item.color} opacity-10 rounded-bl-full group-hover:scale-150 transition-transform duration-500`} />
+            <div key={item.title} className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-card to-card/50 border border-accent/20 hover:border-primary/50 p-8 transition-all">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/20 to-accent/20 opacity-0 group-hover:opacity-100 rounded-bl-full group-hover:scale-150 transition-all duration-500" />
               
               <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 text-white group-hover:bg-white/10 transition-colors relative z-10">
                 <item.icon className="w-6 h-6" />
@@ -67,11 +67,11 @@ export default function Industries() {
           ))}
           
           {/* CTA Card */}
-          <div className="rounded-3xl bg-gradient-to-br from-primary to-accent p-8 flex flex-col justify-center items-center text-center text-background">
+          <div className="rounded-3xl bg-gradient-to-br from-primary to-accent p-8 flex flex-col justify-center items-center text-center">
             <h3 className="text-2xl font-bold font-display mb-2 text-white">Don't see yours?</h3>
             <p className="text-white/90 mb-6 font-medium">We create custom tracking indices for niche markets.</p>
             <Link href="/contact">
-              <Button variant="secondary" className="rounded-full bg-white text-black hover:bg-gray-100">
+              <Button className="rounded-full bg-white text-background hover:bg-gray-100 font-semibold">
                 Let's Talk
               </Button>
             </Link>

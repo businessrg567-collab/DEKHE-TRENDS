@@ -52,12 +52,12 @@ export default function Home() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link href="/audit">
-              <Button size="lg" className="h-14 px-8 text-lg rounded-full bg-white text-black hover:bg-gray-100 font-bold shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all">
+              <Button size="lg" className="h-14 px-8 text-lg rounded-full bg-gradient-to-r from-primary to-accent text-white hover:from-primary/90 hover:to-accent/90 font-bold shadow-[0_0_30px_rgba(168,85,247,0.4)] hover:shadow-[0_0_40px_rgba(34,197,94,0.5)] transition-all">
                 Start Free Audit
               </Button>
             </Link>
             <Link href="/services">
-              <Button size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full border-white/20 hover:bg-white/10">
+              <Button size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full border border-accent/50 text-accent hover:bg-accent/10 font-semibold">
                 Explore Services
               </Button>
             </Link>

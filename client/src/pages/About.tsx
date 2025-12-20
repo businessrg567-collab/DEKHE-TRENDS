@@ -20,9 +20,9 @@ export default function About() {
 
         {/* Story */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24 items-center">
-          <div className="bg-white/5 rounded-3xl aspect-square flex items-center justify-center border border-white/10">
+          <div className="bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl aspect-square flex items-center justify-center border border-accent/30">
             {/* Image Placeholder */}
-            <span className="text-4xl font-bold text-white/20">Our Office</span>
+            <span className="text-4xl font-bold text-white/30">Our Office</span>
           </div>
           <div>
             <h2 className="text-3xl font-bold font-display mb-6">Our Story</h2>
@@ -44,7 +44,7 @@ export default function About() {
               { title: "Speed Matters", desc: "Insights have a shelf life. We deliver faster than anyone else." },
               { title: "Context is King", desc: "A number means nothing without the human story behind it." }
             ].map((value, i) => (
-              <div key={i} className="p-8 bg-card border border-white/5 rounded-2xl hover:border-primary/30 transition-colors">
+              <div key={i} className="p-8 bg-gradient-to-br from-card to-card/50 border border-accent/20 hover:border-primary/50 rounded-2xl transition-colors">
                 <h3 className="text-xl font-bold mb-4 font-display text-primary">{value.title}</h3>
                 <p className="text-muted-foreground">{value.desc}</p>
               </div>

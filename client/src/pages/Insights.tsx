@@ -46,8 +46,8 @@ export default function Insights() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Link href={`/insights/${post.slug}`} className="group block h-full">
-                  <div className="bg-card border border-white/5 rounded-2xl overflow-hidden hover:border-primary/50 transition-all h-full flex flex-col">
-                    <div className="aspect-[16/9] bg-muted relative overflow-hidden">
+                  <div className="bg-gradient-to-br from-card to-card/50 border border-accent/20 hover:border-primary/50 rounded-2xl overflow-hidden transition-all h-full flex flex-col">
+                    <div className="aspect-[16/9] bg-gradient-to-br from-primary/30 to-accent/30 relative overflow-hidden">
                       {/* Placeholder for images since we don't have real assets yet */}
                       {post.imageUrl ? (
                         <img 
@@ -56,8 +56,8 @@ export default function Insights() {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                          <span className="text-white/20 font-display font-bold text-4xl">TrendIntel</span>
+                        <div className="w-full h-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                          <span className="text-white/20 font-display font-bold text-4xl">Dekhe</span>
                         </div>
                       )}
                       <div className="absolute top-4 left-4">
