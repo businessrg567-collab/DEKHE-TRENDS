@@ -10,7 +10,7 @@ export function Footer() {
             <Link href="/" className="flex items-center space-x-2">
               <Zap className="w-6 h-6 text-primary" />
               <span className="text-xl font-bold font-display">
-                Trend<span className="text-primary">Intel</span>
+                Dekhe<span className="text-primary">Trends</span>
               </span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -55,7 +55,7 @@ export function Footer() {
         </div>
         
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground">
-          <p>© 2024 TrendIntel Agency. All rights reserved.</p>
+          <p>© 2024 Dekhe Trends. All rights reserved.</p>
           <p className="mt-2 md:mt-0">Designed for the Future.</p>
         </div>
       </div>

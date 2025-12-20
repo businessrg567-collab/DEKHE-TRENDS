@@ -36,7 +36,7 @@ export function Navigation() {
             <Zap className="w-6 h-6 text-primary" />
           </div>
           <span className="text-xl font-bold font-display tracking-tight">
-            Trend<span className="text-primary">Intel</span>
+            Dekhe<span className="text-primary">Trends</span>
           </span>
         </Link>
 
