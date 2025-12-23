@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2 } from "lucide-react";
-import { type z } from "zod";
+import { z } from "zod";
 
 interface LeadFormProps {
   type: "audit" | "contact" | "newsletter";
