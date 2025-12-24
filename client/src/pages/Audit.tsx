@@ -1,18 +1,10 @@
 import { LeadForm } from "@/components/LeadForm";
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
-import { SEO } from "@/components/SEO";
 
 export default function Audit() {
   return (
-    <>
-      <SEO 
-        title="Free Growth Audit - Get Your Market Analysis | Dekhe Trends"
-        description="Claim your free growth audit. Get your trend alignment score, competitor gap analysis, and 3 actionable quick wins. No commitment required."
-        canonical="https://dekhetrends.com/audit"
-      />
-      
-      <div className="min-h-screen pt-24 pb-12 bg-background flex items-center">
+    <div className="min-h-screen pt-24 pb-12 bg-background flex items-center">
       <div className="container px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -62,6 +54,5 @@ export default function Audit() {
         </div>
       </div>
     </div>
-    </>
   );
 }

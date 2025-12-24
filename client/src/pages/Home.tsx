@@ -3,19 +3,11 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ArrowRight, BarChart3, Search, Zap, Target, TrendingUp } from "lucide-react";
-import { SEO } from "@/components/SEO";
 import heroBg from "@/assets/hero-bg.jpg"; // Mock import for concept
 
 export default function Home() {
   return (
-    <>
-      <SEO 
-        title="Dekhe Trends - Spot Tomorrow's Trends Today | Market Intelligence & Trend Analysis"
-        description="Decode chaotic market signals into actionable growth strategies. We combine AI-powered social listening with human cultural analysis to help brands stay ahead of trends."
-        canonical="https://dekhetrends.com"
-      />
-      
-      <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen">
       {/* HERO SECTION */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
         {/* Abstract Background */}
@@ -106,21 +98,21 @@ export default function Home() {
               icon={TrendingUp}
               title="Trend Reporting (TRaaS)"
               description="Monthly deep-dives into emerging micro-trends specific to your niche. Stay 6 months ahead of competitors."
-              href="/services/trend-reporting"
+              href="/services"
               delay={0.1}
             />
             <ServiceCard 
               icon={Search}
               title="Competitor Intel"
               description="We stalk them so you don't have to. Comprehensive breakdowns of your rivals' ad spend, creative, and strategy."
-              href="/services/competitor-intelligence"
+              href="/services"
               delay={0.2}
             />
             <ServiceCard 
               icon={Target}
               title="Product Validation"
               description="Before you launch, know if it will land. We test concepts against real-time social sentiment data."
-              href="/services/product-validation"
+              href="/services"
               delay={0.3}
             />
           </div>
@@ -176,171 +168,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="py-24 md:py-32">
-        <div className="container px-4 md:px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold font-display mb-6">Trusted by Industry Leaders</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Don't just take our word for it. Here's what our clients say about working with us.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                quote: "Dekhe Trends helped us identify a micro-trend 4 months before it went mainstream. That early insight gave us a massive competitive advantage.",
-                author: "Sarah Chen",
-                role: "CMO, TechFlow",
-                rating: 5
-              },
-              {
-                quote: "Their competitor intelligence reports are incredibly detailed. We've been able to outmaneuver our rivals at every turn thanks to their insights.",
-                author: "Marcus Rodriguez",
-                role: "Founder, GrowthLabs",
-                rating: 5
-              },
-              {
-                quote: "The ROI on their services is unmatched. We've seen a 300% increase in engagement since implementing their social media strategy.",
-                author: "Emily Watson",
-                role: "VP Marketing, StyleHub",
-                rating: 5
-              }
-            ].map((testimonial, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="p-8 rounded-2xl bg-gradient-to-br from-card to-card/50 border border-accent/20 hover:border-primary/50 transition-all"
-              >
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-muted-foreground mb-6 leading-relaxed italic">"{testimonial.quote}"</p>
-                <div>
-                  <p className="font-bold">{testimonial.author}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* INDUSTRIES WE SERVE */}
-      <section className="py-24 bg-white/[0.02] border-y border-white/5">
-        <div className="container px-4 md:px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold font-display mb-6">Industries We Serve</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Our expertise spans across multiple verticals. We understand the unique challenges and opportunities in each industry.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {[
-              'Fashion & Apparel',
-              'Beauty & Wellness',
-              'Tech & SaaS',
-              'D2C Brands',
-              'Creator Economy',
-              'Food & Beverage',
-              'Health & Fitness',
-              'Finance & Fintech',
-              'Real Estate',
-              'Education',
-              'Entertainment',
-              'Automotive'
-            ].map((industry, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.05 }}
-                viewport={{ once: true }}
-                className="p-6 rounded-xl bg-gradient-to-br from-card to-card/50 border border-accent/20 hover:border-primary/50 transition-all text-center group cursor-pointer"
-              >
-                <p className="font-semibold text-sm group-hover:text-primary transition-colors">{industry}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link href="/industries">
-              <Button variant="outline" className="rounded-full px-8">
-                View All Industries <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* LATEST INSIGHTS */}
-      <section className="py-24 md:py-32">
-        <div className="container px-4 md:px-6">
-          <div className="flex justify-between items-end mb-12">
-            <div>
-              <h2 className="text-3xl md:text-5xl font-bold font-display mb-4">Latest Insights</h2>
-              <p className="text-xl text-muted-foreground">Stay informed with our latest market analysis and trend reports.</p>
-            </div>
-            <Link href="/insights" className="hidden md:flex items-center text-primary font-semibold hover:text-white transition-colors">
-              View all insights <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "The Rise of Micro-Communities in 2025",
-                category: "Upcoming Trends",
-                excerpt: "Why mass social media is dying and niche communities are becoming the new goldmine for brands."
-              },
-              {
-                title: "Sustainable Packaging: No Longer Optional",
-                category: "Market Signals",
-                excerpt: "Consumer data shows a 40% drop in loyalty for brands using single-use plastics."
-              },
-              {
-                title: "Why 'Authenticity' is the New Currency",
-                category: "Data-Backed Predictions",
-                excerpt: "Polished production is out. Raw, unedited content is driving 3x more conversions."
-              }
-            ].map((insight, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="group cursor-pointer"
-              >
-                <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary/30 to-accent/30 mb-4 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full bg-background/80 backdrop-blur-sm text-xs font-semibold">
-                      {insight.category}
-                    </span>
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold font-display mb-2 group-hover:text-primary transition-colors">
-                  {insight.title}
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4">{insight.excerpt}</p>
-                <Link href="/insights" className="text-sm font-semibold text-primary inline-flex items-center">
-                  Read More <ArrowRight className="ml-2 w-4 h-4" />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA SECTION */}
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/10">
@@ -360,6 +187,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-    </>
   );
 }

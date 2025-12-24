@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: dekhe-trends
+    env: node
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        generateValue: true
+      # DATABASE_URL should be set in Render dashboard if using a database
+      # The app will work without it but database features will be disabled
+
