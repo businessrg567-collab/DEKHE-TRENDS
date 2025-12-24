@@ -4,8 +4,10 @@ services:
     runtime: node
     plan: free
     buildCommand: unset NODE_ENV && npm ci && NODE_ENV=production npm run build
-    startCommand: NODE_ENV=production npm start
+    startCommand: npm start
     envVars:
+      - key: NODE_ENV
+        value: production
       - key: PORT
         generateValue: true
     # DATABASE_URL should be set in Render dashboard if using a database
