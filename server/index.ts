@@ -66,33 +66,35 @@ app.use((req, res, next) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
 
+    log(`Error: ${message}`, "error");
     res.status(status).json({ message });
-    throw err;
+    // Don't throw in production - let the server continue running
+    if (process.env.NODE_ENV !== "production") {
+      throw err;
+    }
   });
 
   // importantly only setup vite in development and after
   // setting up all the other routes so the catch-all route
   // doesn't interfere with the other routes
   if (process.env.NODE_ENV === "production") {
-    serveStatic(app);
+    try {
+      serveStatic(app);
+      log("Static files configured successfully");
+    } catch (error: any) {
+      log(`Error setting up static files: ${error.message}`, "error");
+      throw error;
+    }
   } else {
     const { setupVite } = await import("./vite");
     await setupVite(httpServer, app);
   }
 
   // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
+  // Default to 5000 if not specified.
   const port = parseInt(process.env.PORT || "5000", 10);
-  httpServer.listen(
-    {
-      port,
-      host: "0.0.0.0",
-      reusePort: true,
-    },
-    () => {
-      log(`serving on port ${port}`);
-    },
-  );
+  httpServer.listen(port, () => {
+    log(`serving on port ${port}`);
+    log(`Open http://localhost:${port} in your browser`);
+  });
 })();
