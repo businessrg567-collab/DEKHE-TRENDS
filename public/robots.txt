@@ -1,9 +1,58 @@
 # https://www.robotstxt.org/robotstxt.html
+# Dekhe Trends - Digital Marketing Agency
+# Last updated: 2025-12-28
+
+# Allow all crawlers
 User-agent: *
 Allow: /
+
+# Google AdSense and Ads crawlers - Full access
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+# Bing Ads
+User-agent: bingbot
+Allow: /
+
+User-agent: adidxbot
+Allow: /
+
+# Other major search engines
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Disallow private/admin paths
+Disallow: /api/
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /assets/*.map$
 
 # Sitemaps
 Sitemap: https://dekhetrends.com/sitemap.xml
 
-# Disallow admin or private paths if any
-# Disallow: /admin/
+# Crawl-delay for polite crawling (optional)
+Crawl-delay: 1
+
+# Host directive
+Host: https://dekhetrends.com
