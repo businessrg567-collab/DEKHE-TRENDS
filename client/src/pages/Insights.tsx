@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { format } from "date-fns";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
+import { SEO } from "@/components/SEO";
 
 export default function Insights() {
   const { data: posts, isLoading, error } = usePosts();
@@ -17,7 +18,14 @@ export default function Insights() {
   }
 
   return (
-    <div className="pt-24 pb-12 min-h-screen">
+    <>
+      <SEO 
+        title="Market Insights & Trend Analysis Blog | Dekhe Trends"
+        description="Deep dives into emerging trends, cultural shifts, and market opportunities. Stay informed with our latest analysis and data-backed predictions."
+        canonical="https://dekhetrends.com/insights"
+      />
+      
+      <div className="pt-24 pb-12 min-h-screen">
       <div className="container px-4 md:px-6">
         <div className="mb-16">
           <h1 className="text-5xl md:text-7xl font-bold font-display mb-6">Market <span className="text-primary">Insights</span></h1>
@@ -96,5 +104,6 @@ export default function Insights() {
         )}
       </div>
     </div>
+    </>
   );
 }

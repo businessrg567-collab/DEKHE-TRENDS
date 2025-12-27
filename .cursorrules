@@ -1,0 +1,55 @@
+# Cursor Rules for Dekhe Trends Project
+
+## Git Workflow Rules
+
+### Before Committing
+- Always check git status before committing
+- Ensure all files are properly formatted
+- Run linting if available
+- Verify blog posts are included in commits
+
+### Commit Messages
+- Use clear, descriptive commit messages
+- Format: "type: description"
+- Examples:
+  - "feat: add new blog post about trends"
+  - "fix: resolve blog post indexing issue"
+  - "docs: update deployment guide"
+
+### Push Rules
+- Always push to main/master branch
+- Verify remote is set correctly: https://github.com/businessrg567-collab/DEKHE-TRENDS.git
+- Use force push only when necessary (git push --force)
+- After pushing, verify on GitHub that files are uploaded
+
+### Deployment Checklist
+Before pushing to GitHub, verify:
+1. All blog posts are in server/blog-seed-data.ts
+2. render.yaml is up to date
+3. Environment variables are documented
+4. Build script works (npm run build)
+5. No sensitive data in commits (.env files ignored)
+
+### Auto-Deploy Rules
+- Repository: https://github.com/businessrg567-collab/DEKHE-TRENDS.git
+- Default branch: main
+- Auto-deploy is configured in Render
+- Pushes to main trigger Render deployment automatically
+
+### Blog Posts
+- All blog posts must be in server/blog-seed-data.ts
+- Each post should be 5000+ words
+- SEO optimized with proper structure
+- 20 blog posts total
+
+### Environment Variables
+Never commit:
+- .env files
+- API keys
+- Database passwords
+- Tokens
+
+Always document in:
+- .env.example
+- README files
+
