@@ -1,6 +1,7 @@
 import { build as esbuild } from "esbuild";
 import { build as viteBuild } from "vite";
-import { rm, readFile } from "fs/promises";
+import { rm, readFile, copyFile, mkdir } from "fs/promises";
+import { existsSync } from "fs";
 import path from "path";
 
 // server deps to bundle to reduce openat(2) syscalls
@@ -63,6 +64,18 @@ async function buildAll() {
       "@shared": path.resolve(process.cwd(), "shared"),
     },
   });
+
+  // Copy public files (robots.txt, sitemap.xml) to dist/public
+  console.log("copying public files...");
+  const publicFiles = ["robots.txt", "sitemap.xml", "sitemap.html"];
+  for (const file of publicFiles) {
+    const srcPath = path.join("public", file);
+    const destPath = path.join("dist", "public", file);
+    if (existsSync(srcPath)) {
+      await copyFile(srcPath, destPath);
+      console.log(`  copied ${file}`);
+    }
+  }
 }
 
 buildAll().catch((err) => {
