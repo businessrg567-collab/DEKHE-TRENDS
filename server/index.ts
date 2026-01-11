@@ -2,6 +2,8 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
+import path from "path";
+import fs from "fs";
 
 const app = express();
 const httpServer = createServer(app);
@@ -57,6 +59,26 @@ app.use((req, res, next) => {
   });
 
   next();
+});
+
+// Serve ads.txt from the root directory
+app.get('/ads.txt', (req, res) => {
+  // Try multiple possible locations for the ads.txt file
+  const possiblePaths = [
+    path.join(process.cwd(), 'ads.txt'),           // Production (root directory)
+    path.join(__dirname, '../../ads.txt'),         // Development (from compiled server)
+    path.join(process.cwd(), 'dist/ads.txt')       // Fallback for some production setups
+  ];
+
+  // Try each path until we find the file
+  for (const filePath of possiblePaths) {
+    if (fs.existsSync(filePath)) {
+      return res.sendFile(filePath);
+    }
+  }
+  
+  // If file not found, return a 404
+  res.status(404).send('ads.txt not found');
 });
 
 (async () => {
