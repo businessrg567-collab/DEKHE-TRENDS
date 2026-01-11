@@ -1,7 +1,7 @@
 import { build as esbuild } from "esbuild";
 import { build as viteBuild } from "vite";
 import { rm, readFile, copyFile, mkdir } from "fs/promises";
-import { existsSync } from "fs";
+import { existsSync, copyFileSync } from "fs";
 import path from "path";
 
 // server deps to bundle to reduce openat(2) syscalls
@@ -38,7 +38,36 @@ async function buildAll() {
   await rm("dist", { recursive: true, force: true });
 
   console.log("building client...");
-  await viteBuild();
+  await viteBuild({
+    root: ".",
+  });
+
+  // Copy static files to the dist directory
+  const distPath = path.join(process.cwd(), 'dist');
+  const publicDistPath = path.join(distPath, 'public');
+  
+  // Create dist/public directory if it doesn't exist
+  if (!existsSync(publicDistPath)) {
+    await mkdir(publicDistPath, { recursive: true });
+  }
+
+  // Copy ads.txt to dist
+  const adsTxtPath = path.join(process.cwd(), 'ads.txt');
+  if (existsSync(adsTxtPath) && existsSync(distPath)) {
+    const destPath = path.join(distPath, 'ads.txt');
+    await copyFile(adsTxtPath, destPath);
+    console.log(`Copied ads.txt to ${destPath}`);
+  }
+
+  // Copy robots.txt and sitemap.xml to dist/public
+  const staticFiles = ['robots.txt', 'sitemap.xml'];
+  for (const file of staticFiles) {
+    const srcPath = path.join(process.cwd(), 'public', file);
+    if (existsSync(srcPath)) {
+      const destPath = path.join(publicDistPath, file);
+      await copyFile(srcPath, destPath);
+      console.log(`Copied ${file} to ${destPath}`);
+    }
 
   console.log("building server...");
   const pkg = JSON.parse(await readFile("package.json", "utf-8"));
