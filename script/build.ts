@@ -68,6 +68,7 @@ async function buildAll() {
       await copyFile(srcPath, destPath);
       console.log(`Copied ${file} to ${destPath}`);
     }
+  }
 
   console.log("building server...");
   const pkg = JSON.parse(await readFile("package.json", "utf-8"));
@@ -94,9 +95,9 @@ async function buildAll() {
     },
   });
 
-  // Copy public files (robots.txt, sitemap.xml) to dist/public
-  console.log("copying public files...");
-  const publicFiles = ["robots.txt", "sitemap.xml", "sitemap.html"];
+  // Copy additional public files to dist/public
+  console.log("copying additional public files...");
+  const publicFiles = ["sitemap.html"]; // Removed duplicates since we already copied robots.txt and sitemap.xml
   for (const file of publicFiles) {
     const srcPath = path.join("public", file);
     const destPath = path.join("dist", "public", file);
