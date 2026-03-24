@@ -39,7 +39,12 @@ async function buildAll() {
 
   console.log("building client...");
   await viteBuild({
-    root: ".",
+    configFile: path.resolve(process.cwd(), "vite.config.ts"),
+    root: path.resolve(process.cwd(), "client"),
+    build: {
+      outDir: path.resolve(process.cwd(), "dist/public"),
+      emptyOutDir: true,
+    },
   });
 
   // Copy static files to the dist directory
