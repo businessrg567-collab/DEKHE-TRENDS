@@ -234,7 +234,7 @@ export default function Mumbai() {
                 </div>
 
                 <div className="p-6 rounded-2xl bg-card border border-accent/20">
-                  <h3 className="text-xl font-bold mb-3">Instagram Reels > Everything Else</h3>
+                  <h3 className="text-xl font-bold mb-3">Instagram Reels &gt; Everything Else</h3>
                   <p className="text-muted-foreground">
                     Mumbai's young, mobile-first audience lives on Instagram Reels. Restaurants, fashion brands, and service businesses using Reels are seeing 10X more reach than static posts. If you're not on Reels, you're invisible to 70% of Mumbai.
                   </p>
