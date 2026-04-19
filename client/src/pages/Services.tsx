@@ -4,449 +4,493 @@ import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
 import { StickyCallButton } from "@/components/StickyCallButton";
 import { 
-  Phone, ArrowRight, Search, Target, MessageSquare, 
-  TrendingUp, BarChart3, Globe, CheckCircle2, AlertCircle
+  Phone, ArrowRight, Search, MousePointerClick, Share2, 
+  BarChart, Megaphone, Mail, Code, Palette, TrendingUp
 } from "lucide-react";
+import { useState } from "react";
+import React from "react";
 
 export default function Services() {
+  const [activeService, setActiveService] = useState(0);
+
+  const services = [
+    {
+      id: 0,
+      icon: Search,
+      name: "Search Engine Optimization",
+      tagline: "Get found when it matters most",
+      problem: "Your website exists, but nobody finds it. You're on page 3 of Google while competitors dominate page 1.",
+      howItWorks: [
+        "Technical audit to fix what's broken",
+        "Keyword research targeting buyer intent",
+        "Content optimization for rankings",
+        "Link building from authority sites",
+        "Monthly tracking and adjustments"
+      ],
+      timeline: "First results in 45-60 days. Full impact in 4-6 months.",
+      investment: "₹25K-75K/month depending on competition",
+      bestFor: ["E-commerce stores", "Service businesses", "B2B companies"],
+      realCase: {
+        before: "Law firm getting 200 monthly visitors",
+        after: "Now getting 4,500 visitors and 40+ qualified leads monthly",
+        time: "6 months"
+      }
+    },
+    {
+      id: 1,
+      icon: MousePointerClick,
+      name: "Pay-Per-Click Advertising",
+      tagline: "Instant visibility, measurable returns",
+      problem: "You need customers now, not 6 months from now. Every day without leads is revenue lost.",
+      howItWorks: [
+        "Campaign setup on Google/Facebook/LinkedIn",
+        "Audience targeting based on behavior",
+        "Ad creative testing and optimization",
+        "Landing page conversion tracking",
+        "Daily budget management"
+      ],
+      timeline: "Campaigns live in 48 hours. Optimization ongoing.",
+      investment: "₹30K-2L/month (includes ad spend + management)",
+      bestFor: ["Startups needing quick traction", "Seasonal businesses", "High-ticket services"],
+      realCase: {
+        before: "Real estate agency spending ₹80K with 12 leads/month",
+        after: "Now spending ₹1.2L getting 85 leads/month at lower cost per lead",
+        time: "3 months"
+      }
+    },
+    {
+      id: 2,
+      icon: Share2,
+      name: "Social Media Management",
+      tagline: "Build an audience that buys",
+      problem: "You post randomly. Engagement is dead. Your competitors have thriving communities while you're shouting into the void.",
+      howItWorks: [
+        "Content calendar planning",
+        "Professional content creation",
+        "Community engagement daily",
+        "Influencer collaborations",
+        "Performance analytics"
+      ],
+      timeline: "Content starts immediately. Growth visible in 60-90 days.",
+      investment: "₹20K-60K/month based on platforms",
+      bestFor: ["Consumer brands", "Restaurants", "Fashion/lifestyle businesses"],
+      realCase: {
+        before: "Cafe with 3K followers, minimal foot traffic from social",
+        after: "Now 18K followers, 30% of daily customers from Instagram",
+        time: "5 months"
+      }
+    }
+  ];
+
   return (
     <>
       <SEO 
-        title="Digital Marketing Services That Actually Work | DekheTrends"
-        description="No fluff, no jargon. Just proven digital marketing services that bring customers to your door. SEO, Google Ads, Social Media, and more."
+        title="Digital Marketing Services | SEO, Ads, Social Media"
+        description="Detailed breakdown of our digital marketing services. See exactly what we do, how we do it, and what results you can expect."
         canonical="https://dekhetrends.com/services"
       />
       
       <StickyCallButton />
 
-      <div className="pt-24 pb-12 min-h-screen">
-        <div className="container px-4 md:px-6 max-w-6xl mx-auto">
-          {/* Hero */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-20"
-          >
-            <div className="inline-block mb-6 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary font-semibold text-sm">
-              Our Services
-            </div>
-            
-            <h1 className="text-4xl md:text-6xl font-bold font-display mb-8 leading-tight">
-              Marketing Services That <span className="gradient-text">Actually Deliver</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-8">
-              We don't do "brand awareness" campaigns. We do campaigns that bring you customers, sales, and revenue. Here's exactly what we offer and how we do it.
-            </p>
+      <div className="min-h-screen">
+        {/* Hero - Different from Home */}
+        <section className="pt-32 pb-16 px-4">
+          <div className="container max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="max-w-4xl"
+            >
+              <div className="text-sm font-medium text-[#7B2FF7] mb-4">WHAT WE DO</div>
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Marketing Services
+                <br />
+                <span className="gradient-text">Explained Simply</span>
+              </h1>
+              <p className="text-xl text-[#B0B0B0] leading-relaxed">
+                No jargon. No fluff. Here's exactly what each service includes, how long it takes, what it costs, and what results you can expect.
+              </p>
+            </motion.div>
+          </div>
+        </section>
 
-            <a href="tel:8077583921">
-              <Button size="lg" className="h-14 px-8 rounded-full bg-gradient-to-r from-primary to-accent text-white hover:opacity-90 font-bold">
-                <Phone className="w-5 h-5 mr-2" />
-                Call: 8077583921
-              </Button>
-            </a>
-          </motion.div>
-
-          {/* SEO Service */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-20 p-8 md:p-12 rounded-3xl bg-gradient-to-br from-card to-card/50 border border-accent/20"
-          >
-            <div className="flex items-start gap-4 mb-6">
-              <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Search className="w-8 h-8 text-primary" />
-              </div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold font-display mb-3">SEO (Search Engine Optimization)</h2>
-                <p className="text-xl text-muted-foreground">Get found by people who are actively searching for what you sell</p>
-              </div>
-            </div>
-
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-green-500" />
-                  What Exactly We Do
-                </h3>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                  We make your website show up on Google when people search for products or services like yours. Not on page 5. On page 1, in the top 3 results.
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  <strong className="text-white">Real example:</strong> A Mumbai-based interior designer was getting 2-3 inquiries a month from Google. After 4 months of SEO work, they're now getting 40-50 inquiries monthly. Same business, same services—just better visibility.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-green-500" />
-                  How We Do It (Step-by-Step)
-                </h3>
-                <div className="space-y-4">
-                  <div className="p-4 rounded-xl bg-background/50 border border-white/10">
-                    <p className="font-semibold text-white mb-2">Month 1: Foundation</p>
-                    <p className="text-muted-foreground">We audit your website, fix technical issues, research what your customers are actually searching for, and create a keyword strategy. No guesswork—we use real search data.</p>
-                  </div>
-                  <div className="p-4 rounded-xl bg-background/50 border border-white/10">
-                    <p className="font-semibold text-white mb-2">Month 2-3: Content & Optimization</p>
-                    <p className="text-muted-foreground">We optimize your existing pages and create new content targeting high-value keywords. Every piece is written for humans first, search engines second.</p>
-                  </div>
-                  <div className="p-4 rounded-xl bg-background/50 border border-white/10">
-                    <p className="font-semibold text-white mb-2">Month 4-6: Authority Building</p>
-                    <p className="text-muted-foreground">We build high-quality backlinks from relevant websites. No spam, no shortcuts. Just legitimate links that Google actually values.</p>
-                  </div>
-                  <div className="p-4 rounded-xl bg-background/50 border border-white/10">
-                    <p className="font-semibold text-white mb-2">Ongoing: Monitoring & Improvement</p>
-                    <p className="text-muted-foreground">We track rankings, traffic, and conversions. If something's not working, we pivot. If something's working well, we double down on it.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-green-500" />
-                  Real Expected Outcomes
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-                    <p className="text-2xl font-bold text-green-500 mb-2">3-6 Months</p>
-                    <p className="text-sm text-muted-foreground">First page rankings for 5-10 keywords, 2-3X increase in organic traffic</p>
-                  </div>
-                  <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-                    <p className="text-2xl font-bold text-green-500 mb-2">6-12 Months</p>
-                    <p className="text-sm text-muted-foreground">Top 3 rankings for main keywords, 5-10X traffic increase, steady lead flow</p>
-                  </div>
-                  <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-                    <p className="text-2xl font-bold text-green-500 mb-2">12+ Months</p>
-                    <p className="text-sm text-muted-foreground">Dominant market position, consistent 50-100+ leads monthly from organic search</p>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-green-500" />
-                  Who This Is Best For
-                </h3>
-                <div className="space-y-3">
-                  <p className="text-lg text-muted-foreground flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <span><strong className="text-white">Local businesses</strong> (restaurants, salons, clinics, gyms) who want customers in their area</span>
-                  </p>
-                  <p className="text-lg text-muted-foreground flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <span><strong className="text-white">Service providers</strong> (lawyers, consultants, agencies) who need a steady stream of inquiries</span>
-                  </p>
-                  <p className="text-lg text-muted-foreground flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <span><strong className="text-white">E-commerce stores</strong> who want to reduce dependency on paid ads</span>
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-6 rounded-xl bg-yellow-500/10 border border-yellow-500/20">
-                <div className="flex items-start gap-3">
-                  <AlertCircle className="w-6 h-6 text-yellow-500 flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="font-semibold text-yellow-500 mb-2">Important: SEO Takes Time</p>
-                    <p className="text-muted-foreground">If someone promises you "first page rankings in 30 days," they're lying. Good SEO takes 3-6 months minimum. Anyone who says otherwise is either using black-hat tactics (which will get you penalized) or just taking your money.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Paid Advertising Service */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-20 p-8 md:p-12 rounded-3xl bg-gradient-to-br from-card to-card/50 border border-accent/20"
-          >
-            <div className="flex items-start gap-4 mb-6">
-              <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Target className="w-8 h-8 text-primary" />
-              </div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold font-display mb-3">Google & Facebook Ads</h2>
-                <p className="text-xl text-muted-foreground">Stop burning money on ads that don't convert</p>
-              </div>
-            </div>
-
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-green-500" />
-                  What Exactly We Do
-                </h3>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                  We run Google Ads, Facebook Ads, and Instagram campaigns that actually generate sales—not just clicks and impressions.
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  <strong className="text-white">Real example:</strong> An online clothing store was spending ₹80,000/month on Facebook ads and getting a 1.5X return. We took over, restructured everything, and now they're spending ₹1,20,000/month but getting a 5.2X return. More spend, but way more profit.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-green-500" />
-                  How We Do It
-                </h3>
-                <div className="space-y-4">
-                  <div className="p-4 rounded-xl bg-background/50 border border-white/10">
-                    <p className="font-semibold text-white mb-2">Week 1: Research & Strategy</p>
-                    <p className="text-muted-foreground">We study your competitors' ads, analyze your target audience, and create a campaign strategy. We also audit your website to make sure it can actually convert the traffic we send.</p>
-                  </div>
-                  <div className="p-4 rounded-xl bg-background/50 border border-white/10">
-                    <p className="font-semibold text-white mb-2">Week 2-3: Campaign Setup & Testing</p>
-                    <p className="text-muted-foreground">We create multiple ad variations, set up proper tracking, and launch campaigns with a conservative budget. We test different audiences, ad copy, and creatives to see what works.</p>
-                  </div>
-                  <div className="p-4 rounded-xl bg-background/50 border border-white/10">
-                    <p className="font-semibold text-white mb-2">Week 4+: Optimization & Scaling</p>
-                    <p className="text-muted-foreground">We kill what's not working, double down on what is, and gradually increase budget on winning campaigns. Every rupee is tracked and accounted for.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-green-500" />
-                  Real Expected Outcomes
-                </h3>
-                <div className="space-y-4">
-                  <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-                    <p className="font-semibold text-white mb-2">Month 1: Testing Phase</p>
-                    <p className="text-muted-foreground">2-3X ROAS (Return on Ad Spend). We're still figuring out what works, so returns are modest but positive.</p>
-                  </div>
-                  <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-                    <p className="font-semibold text-white mb-2">Month 2-3: Optimization Phase</p>
-                    <p className="text-muted-foreground">4-5X ROAS. We've identified winning campaigns and are scaling them up while cutting losers.</p>
-                  </div>
-                  <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-                    <p className="font-semibold text-white mb-2">Month 4+: Scaling Phase</p>
-                    <p className="text-muted-foreground">5-7X ROAS consistently. At this point, ads are a reliable revenue channel, not a gamble.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-green-500" />
-                  Who This Is Best For
-                </h3>
-                <div className="space-y-3">
-                  <p className="text-lg text-muted-foreground flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <span><strong className="text-white">E-commerce businesses</strong> who need immediate sales and can't wait for SEO</span>
-                  </p>
-                  <p className="text-lg text-muted-foreground flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <span><strong className="text-white">Service businesses</strong> with high-ticket offerings (coaching, consulting, B2B services)</span>
-                  </p>
-                  <p className="text-lg text-muted-foreground flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <span><strong className="text-white">Local businesses</strong> who want to dominate their area quickly</span>
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-6 rounded-xl bg-yellow-500/10 border border-yellow-500/20">
-                <div className="flex items-start gap-3">
-                  <AlertCircle className="w-6 h-6 text-yellow-500 flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="font-semibold text-yellow-500 mb-2">Minimum Ad Budget Required</p>
-                    <p className="text-muted-foreground">You need at least ₹30,000-50,000/month in ad spend to see meaningful results. Less than that and we're just testing with no room to scale. If your budget is lower, focus on SEO first.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Social Media Service */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-20 p-8 md:p-12 rounded-3xl bg-gradient-to-br from-card to-card/50 border border-accent/20"
-          >
-            <div className="flex items-start gap-4 mb-6">
-              <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <MessageSquare className="w-8 h-8 text-primary" />
-              </div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold font-display mb-3">Social Media Marketing</h2>
-                <p className="text-xl text-muted-foreground">Turn followers into paying customers</p>
-              </div>
-            </div>
-
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-green-500" />
-                  What Exactly We Do
-                </h3>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                  We build and manage your Instagram, Facebook, and LinkedIn presence. But we don't just post pretty pictures—we create content that actually drives business results.
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  <strong className="text-white">Real example:</strong> A fitness coach had 3,000 Instagram followers but was getting maybe 1-2 clients a month from it. We revamped their content strategy, and now they're getting 15-20 inquiries monthly from Instagram alone. Same follower count, completely different results.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-green-500" />
-                  How We Do It
-                </h3>
-                <div className="space-y-4">
-                  <div className="p-4 rounded-xl bg-background/50 border border-white/10">
-                    <p className="font-semibold text-white mb-2">Content Strategy</p>
-                    <p className="text-muted-foreground">We create a content calendar that mixes educational posts, behind-the-scenes content, customer stories, and direct offers. Every post has a purpose—not just "engagement."</p>
-                  </div>
-                  <div className="p-4 rounded-xl bg-background/50 border border-white/10">
-                    <p className="font-semibold text-white mb-2">Content Creation</p>
-                    <p className="text-muted-foreground">We write captions, design graphics, and edit videos. You provide raw material (photos, videos, ideas), we turn it into scroll-stopping content.</p>
-                  </div>
-                  <div className="p-4 rounded-xl bg-background/50 border border-white/10">
-                    <p className="font-semibold text-white mb-2">Community Management</p>
-                    <p className="text-muted-foreground">We respond to comments and DMs (within reason—we're not your 24/7 customer service). We also engage with your target audience to increase visibility.</p>
-                  </div>
-                  <div className="p-4 rounded-xl bg-background/50 border border-white/10">
-                    <p className="font-semibold text-white mb-2">Performance Tracking</p>
-                    <p className="text-muted-foreground">We track what content drives the most inquiries and sales, then create more of that. Simple.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-green-500" />
-                  Real Expected Outcomes
-                </h3>
-                <div className="space-y-4">
-                  <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-                    <p className="font-semibold text-white mb-2">Month 1-2</p>
-                    <p className="text-muted-foreground">Content quality improves dramatically, engagement increases 2-3X, first few inquiries start coming in</p>
-                  </div>
-                  <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-                    <p className="font-semibold text-white mb-2">Month 3-6</p>
-                    <p className="text-muted-foreground">Consistent 10-20 inquiries monthly, follower growth accelerates, social media becomes a reliable lead source</p>
-                  </div>
-                  <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-                    <p className="font-semibold text-white mb-2">Month 6+</p>
-                    <p className="text-muted-foreground">30-50+ inquiries monthly, strong brand presence, customers finding you through social media regularly</p>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="w-6 h-6 text-green-500" />
-                  Who This Is Best For
-                </h3>
-                <div className="space-y-3">
-                  <p className="text-lg text-muted-foreground flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <span><strong className="text-white">Visual businesses</strong> (fashion, food, beauty, fitness, interior design)</span>
-                  </p>
-                  <p className="text-lg text-muted-foreground flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <span><strong className="text-white">Personal brands</strong> (coaches, consultants, freelancers, creators)</span>
-                  </p>
-                  <p className="text-lg text-muted-foreground flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <span><strong className="text-white">Local businesses</strong> who want to build community and trust</span>
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-6 rounded-xl bg-yellow-500/10 border border-yellow-500/20">
-                <div className="flex items-start gap-3">
-                  <AlertCircle className="w-6 h-6 text-yellow-500 flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="font-semibold text-yellow-500 mb-2">Social Media Isn't Magic</p>
-                    <p className="text-muted-foreground">If your product or service sucks, social media won't save you. We can make you look good online, but we can't fix fundamental business problems. Make sure your offering is solid first.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Other Services Quick Overview */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-20"
-          >
-            <h2 className="text-3xl md:text-5xl font-bold font-display mb-8 text-center">
-              Other Services We Offer
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                {
-                  icon: Globe,
-                  title: "Website Design & Development",
-                  description: "We build websites that actually convert visitors into customers. No fancy animations that slow everything down—just clean, fast, conversion-focused design."
-                },
-                {
-                  icon: BarChart3,
-                  title: "Conversion Rate Optimization",
-                  description: "Your website is getting traffic but not sales? We analyze user behavior, identify bottlenecks, and fix them. Small changes, big impact."
-                },
-                {
-                  icon: TrendingUp,
-                  title: "Email Marketing",
-                  description: "Build a list, nurture it, and turn subscribers into customers. We set up automated email sequences that sell while you sleep."
-                },
-                {
-                  icon: MessageSquare,
-                  title: "Content Marketing",
-                  description: "Blogs, videos, podcasts—whatever format works for your audience. We create content that educates, entertains, and ultimately sells."
-                }
-              ].map((service, i) => (
-                <div
+        {/* Service Selector - Unique Layout */}
+        <section className="py-12 px-4">
+          <div className="container max-w-6xl mx-auto">
+            <div className="flex gap-4 mb-12 overflow-x-auto pb-4">
+              {services.map((service, i) => (
+                <button
                   key={i}
-                  className="p-6 rounded-2xl bg-gradient-to-br from-card to-card/50 border border-accent/20 hover:border-primary/50 transition-all"
+                  onClick={() => setActiveService(i)}
+                  className={`px-6 py-3 rounded-full whitespace-nowrap transition-all duration-300 ${
+                    activeService === i
+                      ? 'bg-gradient-to-r from-[#7B2FF7] to-[#00C6FF] text-white'
+                      : 'glass-card hover:bg-white/[0.05]'
+                  }`}
                 >
-                  <service.icon className="w-10 h-10 text-primary mb-4" />
-                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground">{service.description}</p>
-                </div>
+                  {service.name}
+                </button>
               ))}
             </div>
-          </motion.div>
 
-          {/* CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center p-12 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30"
-          >
-            <h2 className="text-3xl md:text-5xl font-bold font-display mb-6">
-              Not Sure Which Service You Need?
-            </h2>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Call us. We'll have an honest conversation about your business, your goals, and what will actually work for you. No sales pitch, just real advice.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* Active Service Detail */}
+            <motion.div
+              key={activeService}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="glass-card p-8 md:p-12 rounded-3xl"
+            >
+              <div className="grid md:grid-cols-2 gap-12">
+                {/* Left Column */}
+                <div>
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#7B2FF7] to-[#00C6FF] flex items-center justify-center mb-6">
+                    {React.createElement(services[activeService].icon, { className: "w-8 h-8 text-white" })}
+                  </div>
+                  <h2 className="text-4xl font-bold mb-4">{services[activeService].name}</h2>
+                  <p className="text-xl text-[#7B2FF7] mb-6">{services[activeService].tagline}</p>
+                  
+                  <div className="mb-8">
+                    <h3 className="text-lg font-bold mb-3">The Problem</h3>
+                    <p className="text-[#B0B0B0] leading-relaxed">{services[activeService].problem}</p>
+                  </div>
+
+                  <div className="mb-8">
+                    <h3 className="text-lg font-bold mb-3">How It Works</h3>
+                    <ul className="space-y-2">
+                      {services[activeService].howItWorks.map((step, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <div className="w-6 h-6 rounded-full bg-[#7B2FF7]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <span className="text-xs font-bold text-[#7B2FF7]">{i + 1}</span>
+                          </div>
+                          <span className="text-[#B0B0B0]">{step}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Right Column */}
+                <div className="space-y-6">
+                  <div className="p-6 rounded-2xl bg-[#0D0D0D] border border-white/5">
+                    <div className="text-sm text-[#7B2FF7] mb-2">Timeline</div>
+                    <div className="text-lg">{services[activeService].timeline}</div>
+                  </div>
+
+                  <div className="p-6 rounded-2xl bg-[#0D0D0D] border border-white/5">
+                    <div className="text-sm text-[#7B2FF7] mb-2">Investment</div>
+                    <div className="text-lg">{services[activeService].investment}</div>
+                  </div>
+
+                  <div className="p-6 rounded-2xl bg-[#0D0D0D] border border-white/5">
+                    <div className="text-sm text-[#7B2FF7] mb-2">Best For</div>
+                    <div className="space-y-2">
+                      {services[activeService].bestFor.map((item, i) => (
+                        <div key={i} className="text-[#B0B0B0]">• {item}</div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="p-6 rounded-2xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20">
+                    <div className="text-sm font-bold text-green-400 mb-3">Real Result</div>
+                    <div className="space-y-2 text-sm">
+                      <div className="text-[#B0B0B0]">Before: {services[activeService].realCase.before}</div>
+                      <div className="text-white font-medium">After: {services[activeService].realCase.after}</div>
+                      <div className="text-[#B0B0B0]">Timeframe: {services[activeService].realCase.time}</div>
+                    </div>
+                  </div>
+
+                  <a href="tel:8077583921">
+                    <Button className="w-full h-12 rounded-full bg-gradient-to-r from-[#7B2FF7] to-[#00C6FF] hover:opacity-90">
+                      <Phone className="w-4 h-4 mr-2" />
+                      Discuss This Service
+                    </Button>
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+        {/* What Changes Section - Unique to Services */}
+        <section className="py-20 px-4 bg-[#0D0D0D]">
+          <div className="container max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                What Changes <span className="gradient-text">After Hiring Us</span>
+              </h2>
+              <p className="text-xl text-[#B0B0B0] max-w-2xl mx-auto">
+                Tangible differences you'll notice in your business
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {[
+                {
+                  title: "Week 1-2",
+                  changes: [
+                    "Complete audit delivered",
+                    "Strategy document shared",
+                    "Campaigns go live",
+                    "Tracking systems installed"
+                  ]
+                },
+                {
+                  title: "Month 1",
+                  changes: [
+                    "First data insights",
+                    "Initial optimizations",
+                    "Traffic increase visible",
+                    "Lead quality improves"
+                  ]
+                },
+                {
+                  title: "Month 2-3",
+                  changes: [
+                    "Consistent lead flow",
+                    "Lower cost per acquisition",
+                    "Better conversion rates",
+                    "Clear ROI emerging"
+                  ]
+                },
+                {
+                  title: "Month 4+",
+                  changes: [
+                    "Predictable growth",
+                    "Scalable systems",
+                    "Market dominance",
+                    "Compounding returns"
+                  ]
+                }
+              ].map((phase, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="glass-card p-8 rounded-2xl"
+                >
+                  <div className="text-2xl font-bold gradient-text mb-6">{phase.title}</div>
+                  <ul className="space-y-3">
+                    {phase.changes.map((change, j) => (
+                      <li key={j} className="flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full bg-[#00C6FF]" />
+                        <span className="text-[#B0B0B0]">{change}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Process Deep Dive - Different from Home */}
+        <section className="py-20 px-4">
+          <div className="container max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                How We <span className="gradient-text">Actually Work</span>
+              </h2>
+              <p className="text-xl text-[#B0B0B0]">
+                Behind the scenes of every successful campaign
+              </p>
+            </motion.div>
+
+            <div className="space-y-6">
+              {[
+                {
+                  phase: "Discovery",
+                  duration: "Week 1",
+                  activities: [
+                    "Deep dive into your business model",
+                    "Competitor analysis",
+                    "Customer research",
+                    "Current marketing audit"
+                  ]
+                },
+                {
+                  phase: "Strategy",
+                  duration: "Week 2",
+                  activities: [
+                    "Custom strategy document",
+                    "Channel recommendations",
+                    "Budget allocation plan",
+                    "Success metrics defined"
+                  ]
+                },
+                {
+                  phase: "Execution",
+                  duration: "Ongoing",
+                  activities: [
+                    "Campaign setup and launch",
+                    "Content creation",
+                    "Daily monitoring",
+                    "Weekly optimizations"
+                  ]
+                },
+                {
+                  phase: "Reporting",
+                  duration: "Monthly",
+                  activities: [
+                    "Performance dashboard",
+                    "ROI analysis",
+                    "Strategy adjustments",
+                    "Next month planning"
+                  ]
+                }
+              ].map((step, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="gradient-border"
+                >
+                  <div className="p-8 flex flex-col md:flex-row gap-8">
+                    <div className="md:w-1/3">
+                      <div className="text-3xl font-bold gradient-text mb-2">{step.phase}</div>
+                      <div className="text-sm text-[#7B2FF7]">{step.duration}</div>
+                    </div>
+                    <div className="md:w-2/3">
+                      <ul className="space-y-3">
+                        {step.activities.map((activity, j) => (
+                          <li key={j} className="flex items-start gap-3">
+                            <ArrowRight className="w-5 h-5 text-[#00C6FF] flex-shrink-0 mt-0.5" />
+                            <span className="text-[#B0B0B0]">{activity}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing Transparency - Unique Section */}
+        <section className="py-20 px-4 bg-[#0D0D0D]">
+          <div className="container max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Honest <span className="gradient-text">Pricing</span>
+              </h2>
+              <p className="text-xl text-[#B0B0B0] max-w-2xl mx-auto">
+                No hidden fees. No surprises. Here's what you actually pay.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                {
+                  tier: "Starter",
+                  price: "₹30K/month",
+                  ideal: "Small businesses just starting",
+                  includes: [
+                    "1 marketing channel",
+                    "Basic reporting",
+                    "Email support",
+                    "Monthly strategy call"
+                  ]
+                },
+                {
+                  tier: "Growth",
+                  price: "₹75K/month",
+                  ideal: "Businesses ready to scale",
+                  includes: [
+                    "2-3 marketing channels",
+                    "Advanced analytics",
+                    "Priority support",
+                    "Bi-weekly strategy calls",
+                    "Dedicated account manager"
+                  ],
+                  popular: true
+                },
+                {
+                  tier: "Enterprise",
+                  price: "₹1.5L+/month",
+                  ideal: "Established businesses",
+                  includes: [
+                    "Full-service marketing",
+                    "Custom reporting",
+                    "24/7 support",
+                    "Weekly strategy sessions",
+                    "Senior strategist assigned"
+                  ]
+                }
+              ].map((plan, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className={`glass-card p-8 rounded-2xl ${plan.popular ? 'border-2 border-[#7B2FF7]' : ''}`}
+                >
+                  {plan.popular && (
+                    <div className="text-xs font-bold text-[#7B2FF7] mb-4">MOST POPULAR</div>
+                  )}
+                  <div className="text-2xl font-bold mb-2">{plan.tier}</div>
+                  <div className="text-3xl font-bold gradient-text mb-4">{plan.price}</div>
+                  <div className="text-sm text-[#B0B0B0] mb-6">{plan.ideal}</div>
+                  <ul className="space-y-3 mb-8">
+                    {plan.includes.map((item, j) => (
+                      <li key={j} className="flex items-start gap-2 text-sm">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#00C6FF] mt-1.5 flex-shrink-0" />
+                        <span className="text-[#B0B0B0]">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <a href="tel:8077583921">
+                    <Button className="w-full rounded-full" variant={plan.popular ? "default" : "outline"}>
+                      Get Started
+                    </Button>
+                  </a>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA - Different from Home */}
+        <section className="py-20 px-4">
+          <div className="container max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Still Have Questions?
+              </h2>
+              <p className="text-xl text-[#B0B0B0] mb-8">
+                Book a free 30-minute consultation. We'll analyze your current marketing and show you exactly what we'd do differently.
+              </p>
               <a href="tel:8077583921">
-                <Button size="lg" className="h-16 px-10 text-lg rounded-full bg-white text-black hover:bg-gray-100 font-bold">
+                <Button size="lg" className="h-14 px-10 rounded-full bg-gradient-to-r from-[#7B2FF7] to-[#00C6FF] hover:opacity-90 btn-glow">
                   <Phone className="w-5 h-5 mr-2" />
-                  Call: 8077583921
+                  Book Free Consultation
                 </Button>
               </a>
-              <Link href="/audit">
-                <Button size="lg" variant="outline" className="h-16 px-10 text-lg rounded-full border-2 border-white/50 hover:bg-white/10 font-semibold">
-                  Get Free Audit
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-        </div>
+            </motion.div>
+          </div>
+        </section>
       </div>
     </>
   );

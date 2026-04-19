@@ -1,660 +1,427 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { SEO } from "@/components/SEO";
+import { StickyCallButton } from "@/components/StickyCallButton";
 import { 
-  TrendingUp, Target, BarChart3, Users, Zap, Globe, Building2, ShoppingBag,
-  Megaphone, Search, Mail, Video, Share2, Award, Clock, MapPin, Phone,
-  ArrowRight, CheckCircle2, Star, Briefcase, LineChart, Lightbulb, Shield,
-  Rocket, Heart, GraduationCap, Car, Factory, Code
+  Phone, ArrowRight, MapPin, TrendingUp, AlertCircle, CheckCircle2, 
+  Star, Target, Search, MessageSquare, Zap, Users
 } from "lucide-react";
+import { useState } from "react";
 
 export default function Pune() {
-  const services = [
-    {
-      icon: TrendingUp,
-      title: "Market Intelligence & Trends",
-      description: "Deep insights into Pune's dynamic market. From Hinjewadi's IT corridor to Camp's traditional business district, we track trends that drive growth.",
-      features: ["Trend analysis", "Consumer insights", "Market research", "Competitive intelligence"]
-    },
-    {
-      icon: Target,
-      title: "Brand Strategy & Development",
-      description: "Build brands that resonate with Pune's educated and progressive audience. Navigate the Oxford of the East with strategies that command respect.",
-      features: ["Brand positioning", "Identity design", "Brand messaging", "Market entry strategy"]
-    },
-    {
-      icon: BarChart3,
-      title: "Data Analytics & Insights",
-      description: "Transform Pune market data into actionable insights. Advanced analytics tailored for the city's tech-savvy and quality-conscious demographics.",
-      features: ["Custom dashboards", "Predictive analytics", "Customer segmentation", "ROI tracking"]
-    },
-    {
-      icon: Search,
-      title: "Local SEO Pune",
-      description: "Dominate local search across Pune. From Koregaon Park to Wakad, Baner to Kharadi - get found by customers searching in every locality.",
-      features: ["Google My Business", "Local keyword optimization", "Citation building", "Review management"]
-    },
-    {
-      icon: Share2,
-      title: "Social Media Marketing",
-      description: "Engage Pune's highly active and educated social audience. Create campaigns that resonate with the city's young, professional demographic.",
-      features: ["Content strategy", "Community management", "Influencer partnerships", "Paid social campaigns"]
-    },
-    {
-      icon: Megaphone,
-      title: "Performance Marketing",
-      description: "ROI-focused advertising campaigns across all platforms. Precision targeting for Pune's diverse market from IT professionals to traditional businesses.",
-      features: ["Google Ads", "Facebook advertising", "Instagram campaigns", "LinkedIn B2B"]
-    },
-    {
-      icon: Video,
-      title: "Video Production & Marketing",
-      description: "Professional video content that captures Pune's vibrant energy. From corporate videos to social content, we produce videos that engage and convert.",
-      features: ["Video production", "YouTube optimization", "Video advertising", "Social video content"]
-    },
-    {
-      icon: Mail,
-      title: "Email Marketing",
-      description: "Build lasting customer relationships through strategic email campaigns. Segment Pune audiences and deliver personalized messages that drive action.",
-      features: ["Campaign design", "Marketing automation", "List segmentation", "A/B testing"]
-    },
-    {
-      icon: Users,
-      title: "Influencer Marketing",
-      description: "Connect with Pune's influential voices. From tech reviewers to lifestyle influencers, we manage authentic partnerships that build trust.",
-      features: ["Influencer identification", "Campaign management", "Content collaboration", "Performance tracking"]
-    },
-    {
-      icon: ShoppingBag,
-      title: "E-commerce Solutions",
-      description: "Scale your online store in Pune's growing digital market. From strategy to execution, optimize every step of the customer journey.",
-      features: ["Platform optimization", "Conversion optimization", "Cart recovery", "Marketplace strategy"]
-    },
-    {
-      icon: Globe,
-      title: "Digital Transformation",
-      description: "Modernize your Pune business with cutting-edge digital solutions. From traditional operations to digital-first strategies that drive growth.",
-      features: ["Technology consulting", "Process automation", "Digital strategy", "Change management"]
-    },
-    {
-      icon: Lightbulb,
-      title: "Growth Strategy Consulting",
-      description: "Scale your Pune business with proven growth frameworks. Whether you're in Hinjewadi or Shivajinagar, we fuel sustainable growth.",
-      features: ["Market expansion", "Growth hacking", "Funnel optimization", "Retention strategies"]
-    }
-  ];
-
-  const industries = [
-    { name: "IT & Software Services", icon: Code, desc: "Tech company marketing" },
-    { name: "Education & E-learning", icon: GraduationCap, desc: "Educational institutions" },
-    { name: "Automotive & Manufacturing", icon: Car, desc: "Auto industry expertise" },
-    { name: "Engineering & Manufacturing", icon: Factory, desc: "Industrial marketing" },
-    { name: "Healthcare & Medical", icon: Heart, desc: "Medical services marketing" },
-    { name: "Real Estate", icon: Building2, desc: "Property marketing" },
-    { name: "Retail & E-commerce", icon: ShoppingBag, desc: "Retail solutions" },
-    { name: "Professional Services", icon: Briefcase, desc: "B2B services marketing" }
-  ];
-
-  const stats = [
-    { number: "500+", label: "Pune Clients", icon: Users },
-    { number: "₹65Cr+", label: "Revenue Generated", icon: TrendingUp },
-    { number: "12+", label: "Years in Pune", icon: Award },
-    { number: "97%", label: "Client Satisfaction", icon: Star }
-  ];
-
-  const locations = [
-    "Hinjewadi", "Baner", "Wakad", "Kharadi", "Koregaon Park",
-    "Camp", "Shivajinagar", "Aundh", "Viman Nagar", "Hadapsar",
-    "Pimpri Chinchwad", "Kothrud", "Deccan", "Kalyani Nagar", "Magarpatta",
-    "Wagholi", "Katraj", "Swargate", "Pune Station", "Pimpri"
-  ];
-
-  const testimonials = [
-    {
-      name: "Amit Deshmukh",
-      company: "IT Services, Hinjewadi",
-      text: "Dekhe Trends helped us scale from 20 to 200 employees in 18 months. Their B2B marketing strategies and lead generation campaigns were instrumental in our growth. Highly recommend!",
-      rating: 5
-    },
-    {
-      name: "Priya Kulkarni",
-      company: "E-learning Platform, Baner",
-      text: "Our student enrollment increased 300% in 8 months. Their understanding of Pune's education market and digital marketing expertise is exceptional. Best decision we made.",
-      rating: 5
-    },
-    {
-      name: "Rohan Patil",
-      company: "Restaurant Chain, Multiple Locations",
-      text: "We went from 2 outlets to 12 across Pune using their growth strategies. Their local SEO work brings us 350+ daily orders. ROI has been phenomenal.",
-      rating: 5
-    }
-  ];
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
     <>
       <SEO 
-        title="Digital Marketing Agency in Pune | Dekhe Trends Pune"
-        description="Leading digital marketing agency in Pune offering SEO, social media, branding, and growth strategies. Serving Hinjewadi, Baner, Kharadi, and all Pune locations."
+        title="Digital Marketing Agency in Pune | Grow Your Maharashtra Business Online"
+        description="Pune's fastest-growing digital marketing agency. We help Maharashtra businesses dominate their market with innovative SEO, Google Ads, and social media strategies."
         canonical="https://dekhetrends.com/pune"
       />
+      
+      <StickyCallButton />
 
-      <div className="flex flex-col min-h-screen">
-        {/* HERO SECTION */}
-        <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20 bg-gradient-to-br from-background via-background to-primary/5">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/20 via-background to-background" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[150px]" />
-          
-          <div className="container relative z-10 px-4 md:px-6">
-            <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="flex items-center gap-2 mb-6 px-4 py-2 rounded-full border border-primary/30 bg-primary/10"
-              >
-                <MapPin className="w-4 h-4 text-primary" />
-                <span className="text-primary font-semibold">Pune's Premier Digital Marketing Agency</span>
-              </motion.div>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-bold font-display tracking-tight mb-6"
-              >
-                Accelerate Your <br />
-                <span className="gradient-text">Pune Business</span>
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl leading-relaxed"
-              >
-                From Hinjewadi to Camp, Baner to Kharadi - we help Pune businesses grow with data-driven digital marketing strategies that deliver measurable results and sustainable growth.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="flex flex-col sm:flex-row gap-4 mb-12"
-              >
-                <Link href="/audit">
-                  <Button size="lg" className="h-14 px-8 text-lg rounded-full bg-gradient-to-r from-primary to-accent hover:shadow-lg">
-                    Get Free Pune Market Audit
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full">
-                    <Phone className="mr-2 w-5 h-5" />
-                    Schedule Consultation
-                  </Button>
-                </Link>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex flex-wrap justify-center gap-3"
-              >
-                {locations.slice(0, 10).map((location) => (
-                  <Badge key={location} variant="secondary" className="px-3 py-1">
-                    {location}
-                  </Badge>
-                ))}
-                <Badge variant="secondary" className="px-3 py-1">+10 More</Badge>
-              </motion.div>
+      <div className="pt-24 pb-12 min-h-screen">
+        <div className="container px-4 md:px-6 max-w-7xl mx-auto">
+          {/* Hero */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-24"
+          >
+            <div className="flex items-center justify-center gap-2 text-primary mb-8">
+              <MapPin className="w-6 h-6" />
+              <span className="text-lg font-semibold">Digital Marketing in Pune</span>
             </div>
-          </div>
-        </section>
 
-        {/* STATS */}
-        <section className="py-16 border-y border-white/5 bg-white/[0.02]">
-          <div className="container px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="text-center"
-                >
-                  <stat.icon className="w-8 h-8 mx-auto mb-3 text-primary" />
-                  <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">{stat.number}</div>
-                  <div className="text-muted-foreground">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+            <h1 className="text-5xl md:text-7xl font-bold font-display mb-10 leading-tight">
+              Pune's Young Energy Meets <span className="gradient-text">Smart Digital Marketing</span>
+            </h1>
 
-        {/* WHY CHOOSE US */}
-        <section className="py-24 md:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold font-display mb-6">
-                Why Pune Businesses Choose Dekhe Trends
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                We understand Pune's unique business culture - where education meets innovation, tradition meets technology. Our strategies drive modern growth while respecting your values.
+            <div className="max-w-5xl mx-auto mb-12">
+              <p className="text-2xl md:text-3xl text-muted-foreground leading-relaxed mb-8">
+                <strong className="text-white">The Oxford of the East is now the startup capital of Maharashtra.</strong>
+              </p>
+              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
+                Young entrepreneurs, established IT companies, and traditional Marathi businesses are all discovering the same thing: <strong className="text-primary">digital marketing is the great equalizer.</strong>
+              </p>
+              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                The college student who built a food delivery app. The IT professional who started a consulting firm. The family business that went online during COVID. <strong className="text-white">They all understood one thing: visibility equals opportunity.</strong>
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <Card className="border-primary/20 hover:border-primary/40 transition-all">
-                <CardHeader>
-                  <MapPin className="w-12 h-12 text-primary mb-4" />
-                  <CardTitle>Deep Local Expertise</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    We understand Pune's unique market dynamics - from the IT ecosystem of Hinjewadi to the traditional businesses of Camp. Our strategies are tailored to each area's specific characteristics and demographics.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-primary/20 hover:border-primary/40 transition-all">
-                <CardHeader>
-                  <Users className="w-12 h-12 text-primary mb-4" />
-                  <CardTitle>Extensive Network</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    Access our vast network of Pune influencers, media contacts, and business partners. From tech industry connections to educational institutions, we open doors that accelerate your growth.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-primary/20 hover:border-primary/40 transition-all">
-                <CardHeader>
-                  <BarChart3 className="w-12 h-12 text-primary mb-4" />
-                  <CardTitle>Results-Driven Approach</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    Every campaign is backed by Pune market data and analytics. We track 500+ local metrics, analyze competitor movements, and use AI-powered insights to ensure measurable ROI.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-primary/20 hover:border-primary/40 transition-all">
-                <CardHeader>
-                  <Clock className="w-12 h-12 text-primary mb-4" />
-                  <CardTitle>Fast Execution</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    Pune's fast-paced market demands quick action. Get campaign launches in 48 hours, strategy revisions within 24 hours, and real-time support during critical business moments.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-primary/20 hover:border-primary/40 transition-all">
-                <CardHeader>
-                  <Award className="w-12 h-12 text-primary mb-4" />
-                  <CardTitle>Proven Track Record</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    Over 500 successful campaigns across Pune's diverse industries. From helping startups in Hinjewadi to scaling enterprises in Magarpatta, we deliver consistent, transformative results.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-primary/20 hover:border-primary/40 transition-all">
-                <CardHeader>
-                  <Shield className="w-12 h-12 text-primary mb-4" />
-                  <CardTitle>Transparent Partnership</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    No hidden costs, no surprises. Clear, upfront pricing with flexible packages designed for Pune businesses of all sizes. ROI-focused investment you can trust.
-                  </p>
-                </CardContent>
-              </Card>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
+              <a href="tel:8077583921">
+                <Button size="lg" className="h-16 px-12 text-xl rounded-full bg-gradient-to-r from-primary to-accent text-white hover:opacity-90 font-bold shadow-2xl">
+                  <Phone className="w-6 h-6 mr-3" />
+                  Call Now: 8077583921
+                </Button>
+              </a>
+              <Link href="/audit">
+                <Button size="lg" variant="outline" className="h-16 px-12 text-xl rounded-full border-2 border-white/50 hover:bg-white/10 font-semibold shadow-xl">
+                  Get Free Audit
+                  <ArrowRight className="ml-3 w-6 h-6" />
+                </Button>
+              </Link>
             </div>
-          </div>
-        </section>
 
-        {/* SERVICES */}
-        <section className="py-24 md:py-32 bg-white/[0.02]">
-          <div className="container px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold font-display mb-6">
-                Complete Digital Marketing Services in Pune
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20">
+                <div className="text-4xl font-bold text-primary mb-2">180+</div>
+                <div className="text-lg text-muted-foreground">Pune Clients</div>
+              </div>
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20">
+                <div className="text-4xl font-bold text-green-400 mb-2">30-90</div>
+                <div className="text-lg text-muted-foreground">Days to Results</div>
+              </div>
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20">
+                <div className="text-4xl font-bold text-blue-400 mb-2">4.9/5</div>
+                <div className="text-lg text-muted-foreground">Client Rating</div>
+              </div>
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20">
+                <div className="text-4xl font-bold text-purple-400 mb-2">₹18Cr+</div>
+                <div className="text-lg text-muted-foreground">Revenue Generated</div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* The Pune Opportunity */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-24"
+          >
+            <div className="p-12 md:p-16 rounded-3xl bg-gradient-to-br from-card to-card/50 border-2 border-accent/30 shadow-2xl">
+              <h2 className="text-4xl md:text-5xl font-bold font-display mb-12 text-center leading-tight">
+                Why Pune Is Perfect for <span className="gradient-text">Digital Marketing Success</span>
               </h2>
-              <p className="text-xl text-muted-foreground">
-                End-to-end digital marketing solutions tailored for Pune's competitive market. Every service customized to your business goals and target audience.
+
+              <div className="space-y-12">
+                <div className="text-center max-w-4xl mx-auto">
+                  <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">
+                    Pune has something special: a perfect mix of <strong className="text-white">young energy, technical talent, and business ambition.</strong>
+                  </p>
+                  <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                    But here's what makes Pune businesses different: they're <strong className="text-primary">willing to experiment, quick to adapt, and smart about investments.</strong>
+                  </p>
+                </div>
+
+                <div className="p-8 rounded-2xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20">
+                  <p className="text-xl md:text-2xl font-bold text-center text-white mb-6">
+                    A startup founder in Koregaon Park shared this insight:
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                      <p className="text-xl text-muted-foreground mb-4">
+                        "In Pune, you can't rely on just being good at what you do. <strong className="text-white">The competition is too smart.</strong>"
+                      </p>
+                      <p className="text-xl text-muted-foreground mb-4">
+                        "Every week, there's a new startup, a new service, a new restaurant. <strong className="text-green-400">The ones that survive are the ones that get noticed.</strong>"
+                      </p>
+                    </div>
+                    <div className="p-6 rounded-xl bg-green-500/20 border border-green-500/30">
+                      <h4 className="text-lg font-bold text-green-400 mb-4">The Pune advantage:</h4>
+                      <div className="space-y-3">
+                        <div className="flex items-start gap-3">
+                          <CheckCircle2 className="w-5 h-5 text-green-500 mt-1" />
+                          <span className="text-muted-foreground">Young, tech-savvy audience that discovers businesses online</span>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <CheckCircle2 className="w-5 h-5 text-green-500 mt-1" />
+                          <span className="text-muted-foreground">High smartphone and internet penetration</span>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <CheckCircle2 className="w-5 h-5 text-green-500 mt-1" />
+                          <span className="text-muted-foreground">Businesses that understand ROI and data-driven decisions</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-3xl md:text-4xl font-bold mb-8 text-center">
+                    The Pune Business Ecosystem
+                  </h3>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20">
+                      <Zap className="w-10 h-10 text-blue-400 mb-4" />
+                      <h4 className="text-xl font-bold text-blue-400 mb-3">Tech Startups</h4>
+                      <p className="text-muted-foreground">
+                        From Hinjewadi to Magarpatta, Pune's startup ecosystem is booming. These companies need digital marketing to compete with Bangalore and Mumbai startups.
+                      </p>
+                    </div>
+
+                    <div className="p-6 rounded-2xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20">
+                      <Users className="w-10 h-10 text-green-400 mb-4" />
+                      <h4 className="text-xl font-bold text-green-400 mb-3">Student Market</h4>
+                      <p className="text-muted-foreground">
+                        With lakhs of students, Pune has a massive young consumer base. Businesses targeting this demographic need strong social media presence.
+                      </p>
+                    </div>
+
+                    <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20">
+                      <TrendingUp className="w-10 h-10 text-purple-400 mb-4" />
+                      <h4 className="text-xl font-bold text-purple-400 mb-3">Traditional Businesses</h4>
+                      <p className="text-muted-foreground">
+                        Family businesses in Pune are modernizing fast. They're adopting digital marketing to reach younger customers and expand beyond local markets.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Services for Pune */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-24"
+          >
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-6xl font-bold font-display mb-6 leading-tight">
+                Digital Marketing That Works in <span className="gradient-text">Pune's Dynamic Market</span>
+              </h2>
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+                Fast, data-driven strategies for Pune's fast-moving business environment
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="h-full border-primary/20 hover:border-primary/40 hover:shadow-lg transition-all group">
-                    <CardHeader>
-                      <service.icon className="w-12 h-12 text-primary mb-4 group-hover:scale-110 transition-transform" />
-                      <CardTitle className="text-xl mb-2">{service.title}</CardTitle>
-                      <CardDescription className="text-base">{service.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <CheckCircle2 className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                            <span className="text-muted-foreground">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+            <div className="space-y-12">
+              {/* Startup Marketing */}
+              <div className="p-12 md:p-16 rounded-3xl bg-gradient-to-br from-card to-card/50 border-2 border-accent/30 shadow-2xl">
+                <div className="flex items-start gap-6 mb-12">
+                  <div className="w-20 h-20 rounded-2xl bg-primary/20 flex items-center justify-center flex-shrink-0 border border-primary/30">
+                    <Zap className="w-10 h-10 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-4xl md:text-5xl font-bold font-display mb-4 leading-tight">
+                      Startup Growth Marketing
+                    </h3>
+                    <p className="text-2xl md:text-3xl text-primary font-semibold">
+                      Rapid growth strategies for Pune's ambitious startups
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="p-8 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 border-2 border-green-500/30">
+                    <h4 className="text-2xl font-bold text-green-400 mb-4">Success Story:</h4>
+                    <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+                      A fintech startup in Hinjewadi needed to acquire 10,000 users in 6 months. Our growth marketing approach delivered:
+                    </p>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <span className="text-white font-semibold">15,000 users in 4 months</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <span className="text-white font-semibold">₹50 cost per acquisition (target was ₹100)</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <span className="text-white font-semibold">Secured Series A funding</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border-2 border-blue-500/30">
+                    <h4 className="text-2xl font-bold text-blue-400 mb-4">Growth Marketing Tactics:</h4>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <span className="text-muted-foreground">Viral social media campaigns</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <span className="text-muted-foreground">Influencer partnerships with Pune colleges</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <span className="text-muted-foreground">Performance marketing and A/B testing</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <span className="text-muted-foreground">Content marketing for thought leadership</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="text-center mt-8">
+                  <a href="tel:8077583921">
+                    <Button size="lg" className="h-16 px-12 text-xl rounded-full bg-gradient-to-r from-primary to-accent text-white hover:opacity-90 font-bold shadow-2xl">
+                      <Phone className="w-6 h-6 mr-3" />
+                      Discuss Growth Strategy: 8077583921
+                    </Button>
+                  </a>
+                </div>
+              </div>
+
+              {/* Local Business Marketing */}
+              <div className="p-12 md:p-16 rounded-3xl bg-gradient-to-br from-card to-card/50 border-2 border-accent/30 shadow-2xl">
+                <div className="flex items-start gap-6 mb-12">
+                  <div className="w-20 h-20 rounded-2xl bg-primary/20 flex items-center justify-center flex-shrink-0 border border-primary/30">
+                    <Target className="w-10 h-10 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-4xl md:text-5xl font-bold font-display mb-4 leading-tight">
+                      Local Business Marketing
+                    </h3>
+                    <p className="text-2xl md:text-3xl text-primary font-semibold">
+                      Connect with Pune's diverse neighborhoods and communities
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="p-8 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 border-2 border-green-500/30">
+                    <h4 className="text-2xl font-bold text-green-400 mb-4">Success Story:</h4>
+                    <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+                      A chain of fitness centers wanted to compete with national brands. After implementing local digital marketing:
+                    </p>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <span className="text-white font-semibold">400% increase in membership inquiries</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <span className="text-white font-semibold">Opened 3 new locations</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <span className="text-white font-semibold">Became #1 local fitness brand</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border-2 border-blue-500/30">
+                    <h4 className="text-2xl font-bold text-blue-400 mb-4">Local Marketing Approach:</h4>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <span className="text-muted-foreground">Area-specific Google Ads (Koregaon Park, Baner, etc.)</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <span className="text-muted-foreground">Instagram marketing for young Pune audience</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <span className="text-muted-foreground">Google My Business optimization</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <span className="text-muted-foreground">Community engagement and events</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="text-center mt-8">
+                  <a href="tel:8077583921">
+                    <Button size="lg" className="h-16 px-12 text-xl rounded-full bg-gradient-to-r from-primary to-accent text-white hover:opacity-90 font-bold shadow-2xl">
+                      <Phone className="w-6 h-6 mr-3" />
+                      Get Local Marketing Plan: 8077583921
+                    </Button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* FAQs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-24"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold font-display mb-12 text-center">
+              Questions from <span className="gradient-text">Pune Entrepreneurs</span>
+            </h2>
+
+            <div className="space-y-4">
+              {[
+                {
+                  q: "How is Pune different from Mumbai or Bangalore for digital marketing?",
+                  a: "Pune has a younger, more experimental audience. They're quick to try new apps, services, and brands. This means faster adoption but also higher competition. You need to be creative and data-driven to stand out."
+                },
+                {
+                  q: "What's the typical budget for a Pune startup?",
+                  a: "Early-stage startups typically invest ₹50K-1.5L monthly. Growth-stage companies invest ₹2-5L monthly. The key is starting lean, measuring everything, and scaling what works."
+                },
+                {
+                  q: "Do you understand the student market in Pune?",
+                  a: "Absolutely. We've helped dozens of businesses target Pune's student population. The key is Instagram and YouTube marketing, influencer partnerships, and understanding their spending patterns and preferences."
+                },
+                {
+                  q: "Can you help with both B2B and B2C marketing?",
+                  a: "Yes. Pune has a diverse business ecosystem. We help IT companies with LinkedIn and content marketing, and we help restaurants and retail with Instagram and local SEO. Different audiences, different strategies."
+                },
+                {
+                  q: "How quickly can we see results in Pune's competitive market?",
+                  a: "Social media and Google Ads: 2-4 weeks. Local SEO: 6-12 weeks. Content marketing: 3-6 months. Pune's audience is quick to respond, so you can test and iterate faster than in other cities."
+                },
+                {
+                  q: "Do you work with traditional Marathi businesses too?",
+                  a: "Yes, we help traditional businesses modernize their marketing. This often involves creating content in Marathi, targeting local keywords, and building trust with established communities while attracting younger customers."
+                }
+              ].map((faq, i) => (
+                <div key={i} className="border border-accent/20 rounded-2xl overflow-hidden">
+                  <button
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    className="w-full p-6 text-left flex items-center justify-between hover:bg-card/50 transition-colors"
+                  >
+                    <h3 className="font-bold text-lg pr-4">{faq.q}</h3>
+                    <ArrowRight className={`w-5 h-5 text-primary flex-shrink-0 transition-transform ${openFaq === i ? "rotate-90" : ""}`} />
+                  </button>
+                  {openFaq === i && (
+                    <div className="px-6 pb-6">
+                      <p className="text-muted-foreground leading-relaxed">{faq.a}</p>
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
+          </motion.div>
 
-            <div className="text-center mt-12">
-              <Link href="/services">
-                <Button size="lg" className="h-12 px-8">
-                  Explore All Services
+          {/* Final CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center p-12 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold font-display mb-6">
+              Ready to Accelerate Your Pune Business?
+            </h2>
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Let's harness Pune's energy and innovation to build a digital marketing strategy that drives real growth.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="tel:8077583921">
+                <Button size="lg" className="h-16 px-10 text-lg rounded-full bg-white text-black hover:bg-gray-100 font-bold">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Call: 8077583921
+                </Button>
+              </a>
+              <Link href="/audit">
+                <Button size="lg" variant="outline" className="h-16 px-10 text-lg rounded-full border-2 border-white/50 hover:bg-white/10 font-semibold">
+                  Get Free Audit
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
             </div>
-          </div>
-        </section>
-
-        {/* INDUSTRIES */}
-        <section className="py-24 md:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold font-display mb-6">
-                Industries We Serve in Pune
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                Specialized expertise across Pune's key industries. We understand your sector's unique challenges and opportunities.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {industries.map((industry, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="text-center h-full border-primary/20 hover:border-primary/40 hover:shadow-lg transition-all group cursor-pointer">
-                    <CardHeader>
-                      <industry.icon className="w-16 h-16 mx-auto text-primary mb-4 group-hover:scale-110 transition-transform" />
-                      <CardTitle className="text-lg">{industry.name}</CardTitle>
-                      <CardDescription>{industry.desc}</CardDescription>
-                    </CardHeader>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* LOCATIONS */}
-        <section className="py-24 md:py-32 bg-white/[0.02]">
-          <div className="container px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold font-display mb-6">
-                Serving All of Pune
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                From Hinjewadi to Camp, Baner to Kharadi - we're your local digital marketing partner across Pune and Pimpri-Chinchwad.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-              {locations.map((location, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.02 }}
-                  viewport={{ once: true }}
-                  className="flex items-center gap-2 p-4 rounded-lg border border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all"
-                >
-                  <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="font-medium">{location}</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* TESTIMONIALS */}
-        <section className="py-24 md:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold font-display mb-6">
-                Success Stories from Pune
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                Real results from real Pune businesses. See how we've helped companies achieve remarkable growth.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="h-full border-primary/20">
-                    <CardHeader>
-                      <div className="flex gap-1 mb-4">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-primary text-primary" />
-                        ))}
-                      </div>
-                      <CardDescription className="text-base leading-relaxed">
-                        "{testimonial.text}"
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="font-semibold">{testimonial.name}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.company}</div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* PROCESS */}
-        <section className="py-24 md:py-32 bg-white/[0.02]">
-          <div className="container px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold font-display mb-6">
-                Our Proven Process
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                A systematic approach that has delivered results for 500+ Pune businesses.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  step: "01",
-                  title: "Discovery & Analysis",
-                  description: "Comprehensive audit of your digital presence, competitors, and Pune market opportunities with actionable insights.",
-                  icon: Search
-                },
-                {
-                  step: "02",
-                  title: "Strategy Development",
-                  description: "Custom strategy tailored to your goals, audience, and budget. Clear roadmap with timelines and KPIs.",
-                  icon: Lightbulb
-                },
-                {
-                  step: "03",
-                  title: "Implementation",
-                  description: "Expert execution across all channels. Quality implementation with attention to detail and results focus.",
-                  icon: Rocket
-                },
-                {
-                  step: "04",
-                  title: "Optimize & Scale",
-                  description: "Continuous monitoring, testing, and optimization. Scale winners, eliminate losers. Transparent reporting.",
-                  icon: LineChart
-                }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="h-full border-primary/20 hover:border-primary/40 transition-all">
-                    <CardHeader>
-                      <div className="text-6xl font-bold text-primary/20 mb-4">{item.step}</div>
-                      <item.icon className="w-12 h-12 text-primary mb-4" />
-                      <CardTitle className="text-xl mb-2">{item.title}</CardTitle>
-                      <CardDescription className="text-base">{item.description}</CardDescription>
-                    </CardHeader>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-24 md:py-32 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-accent/20" />
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[150px]" />
-          
-          <div className="container relative z-10 px-4 md:px-6">
-            <div className="max-w-4xl mx-auto text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="text-4xl md:text-6xl font-bold font-display mb-6">
-                  Ready to Accelerate Your Growth?
-                </h2>
-                <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-                  Join 500+ successful Pune businesses. Get your free consultation and market audit today.
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                  <Link href="/audit">
-                    <Button size="lg" className="h-14 px-8 text-lg rounded-full bg-gradient-to-r from-primary to-accent hover:shadow-xl">
-                      Get Free Market Audit
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </Button>
-                  </Link>
-                  <Link href="/contact">
-                    <Button size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full">
-                      <Phone className="mr-2 w-5 h-5" />
-                      Talk to Our Team
-                    </Button>
-                  </Link>
-                </div>
-
-                <div className="flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-accent" />
-                    <span>Free Consultation</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-accent" />
-                    <span>No Contracts</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-accent" />
-                    <span>ROI Guarantee</span>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section className="py-24 md:py-32 bg-white/[0.02]">
-          <div className="container px-4 md:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold font-display mb-6">
-                Frequently Asked Questions
-              </h2>
-            </div>
-
-            <div className="max-w-3xl mx-auto space-y-6">
-              {[
-                {
-                  q: "What are your pricing packages for Pune businesses?",
-                  a: "We offer flexible packages starting from ₹22,000/month for small businesses to comprehensive enterprise solutions. Pricing is customized based on your needs, business size, and goals. Contact us for a detailed quote tailored to your Pune business."
-                },
-                {
-                  q: "How quickly can we see results?",
-                  a: "Timeline varies by service. Paid ads show results within days, SEO takes 3-6 months for significant rankings. We provide realistic timelines and show progress through weekly reports. Most Pune clients see meaningful results within 90 days."
-                },
-                {
-                  q: "Do you work with IT companies in Hinjewadi?",
-                  a: "Yes! We have extensive experience with Pune's IT sector, especially in Hinjewadi, Magarpatta, and Kharadi. We understand B2B tech marketing, lead generation, and the unique challenges of IT services companies."
-                },
-                {
-                  q: "Can you help with educational institution marketing?",
-                  a: "Absolutely! Pune is an education hub and we've worked with numerous schools, colleges, coaching centers, and e-learning platforms. We understand student recruitment, admissions marketing, and brand building for educational institutions."
-                },
-                {
-                  q: "Do you serve Pimpri-Chinchwad area?",
-                  a: "Yes! We serve the entire Pune Metropolitan Region including Pimpri-Chinchwad, Wakad, Hinjewadi, and surrounding areas. Our local expertise covers all of Pune's key business districts."
-                },
-                {
-                  q: "What makes you different from other Pune agencies?",
-                  a: "Three key differentiators: (1) Deep local market knowledge and network, (2) Data-driven approach with transparent reporting, (3) Proven track record with 500+ successful campaigns across diverse industries."
-                }
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="border-primary/20">
-                    <CardHeader>
-                      <CardTitle className="text-lg">{faq.q}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground leading-relaxed">{faq.a}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+          </motion.div>
+        </div>
       </div>
     </>
   );
