@@ -19,23 +19,35 @@ export default function PrivacyPolicy() {
             <h1 className="text-4xl md:text-5xl font-bold font-display mb-6">Privacy Policy</h1>
             <p className="text-muted-foreground mb-8">Last Updated: December 20, 2025</p>
 
-            <div className="prose prose-invert max-w-none space-y-8">
+            <div className="bg-primary/10 p-6 rounded-lg border border-primary/20 mb-8">
+              <p className="text-lg leading-relaxed">
+                We respect your privacy. This policy explains what information we collect, why we collect it, 
+                and how we protect it. No legal jargon - just straight talk.
+              </p>
+            </div>
+
+            <div className="space-y-8">
               <section>
-                <h2 className="text-2xl font-bold font-display mb-4">1. Introduction</h2>
+                <h2 className="text-2xl font-bold font-display mb-4">The Simple Version</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  Welcome to Dekhe Trends ("we," "our," or "us"). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website dekhetrends.com and use our services.
+                  Here's the quick summary before we get into details:
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  By accessing or using our website, you agree to this Privacy Policy. If you do not agree with the terms of this Privacy Policy, please do not access the site.
-                </p>
+                <ul className="list-disc list-inside text-muted-foreground space-y-2">
+                  <li>We collect information you give us (name, email, etc.) and some automatic data (how you use our site)</li>
+                  <li>We use it to provide our services, improve our website, and communicate with you</li>
+                  <li>We don't sell your personal information to anyone</li>
+                  <li>We use cookies and analytics tools (like Google Analytics)</li>
+                  <li>You can request to see, update, or delete your data anytime</li>
+                  <li>We take security seriously and protect your information</li>
+                </ul>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold font-display mb-4">2. Information We Collect</h2>
+                <h2 className="text-2xl font-bold font-display mb-4">What Information We Collect</h2>
                 
-                <h3 className="text-xl font-semibold mb-3">2.1 Personal Information</h3>
+                <h3 className="text-xl font-semibold mb-3">Information You Give Us</h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  We may collect personal information that you voluntarily provide to us when you:
+                  When you use our website or services, you might share:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
                   <li>Register for our services</li>

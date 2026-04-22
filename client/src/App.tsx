@@ -20,6 +20,9 @@ import Audit from "@/pages/Audit";
 import Contact from "@/pages/Contact";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
+import Disclaimer from "@/pages/Disclaimer";
+import CookiePolicy from "@/pages/CookiePolicy";
+import RefundPolicy from "@/pages/RefundPolicy";
 import Sitemap from "@/pages/Sitemap";
 
 // Service Pages - Individual imports
@@ -93,6 +96,9 @@ function Router() {
           <Route path="/contact" component={Contact} />
           <Route path="/privacy-policy" component={PrivacyPolicy} />
           <Route path="/terms-of-service" component={TermsOfService} />
+          <Route path="/disclaimer" component={Disclaimer} />
+          <Route path="/cookie-policy" component={CookiePolicy} />
+          <Route path="/refund-policy" component={RefundPolicy} />
           <Route path="/sitemap" component={Sitemap} />
           
           {/* City Routes */}
